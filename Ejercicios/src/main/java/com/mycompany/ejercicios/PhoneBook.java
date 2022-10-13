@@ -14,18 +14,27 @@ import java.util.Set;
  */
 public class PhoneBook {
 
-    public static String getPhoneNumber(HashMap<String, String> myHashMap, String myKey) {
+    private HashMap<String, String> users;
 
-        return myHashMap.get(myKey);
+    public PhoneBook(HashMap<String, String> users) {
+        this.users = users;
+    }
+
+    public String getPhoneNumber(HashMap<String, String> myHashMap, String contact) {
+
+        return myHashMap.get(contact);
+    }
+
+    public void addUser(HashMap<String, String> myHashMap, String contact, String number) {
+        myHashMap.put(contact, number);
     }
 
     public static void main(String[] args) {
-        HashMap<String, String> users = new HashMap<>();
-        users.put("Pepe", "6852152655");
-        users.put("Pepa", "6852152677");
-        users.put("Pep", "6852152699");
-        users.put("Pepi", "6852152666");
+        HashMap<String, String> myAgenda = new HashMap<>();
+        PhoneBook paginasAmarillas = new PhoneBook(myAgenda);
+        paginasAmarillas.addUser(myAgenda, "Manolo", "888777444");
+        paginasAmarillas.addUser(myAgenda, "Manoli", "958777444");
 
-        System.out.println(getPhoneNumber(users, "Pep"));
+        System.out.println(paginasAmarillas.getPhoneNumber(myAgenda, "Manolo"));
     }
 }
